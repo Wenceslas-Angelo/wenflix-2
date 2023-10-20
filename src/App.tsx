@@ -31,7 +31,7 @@ const App = () => {
               <Route path="/category/popular" element={<Popular />} />
               <Route path="/category/upcoming" element={<Upcoming />} />
               <Route path="/category/top_rated" element={<TopRated />} />
-              <Route path="/movie/:id" element={<Movie />} />
+              <Route path="/movie/:movieId" element={<Movie />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

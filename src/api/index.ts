@@ -24,7 +24,7 @@ const apiSettings = {
   getTopRatedMovies: async (): Promise<Movies> =>
     getMovies(TOP_RATED_BASE_URL, 1),
 
-  getDetailsMovie: async (movieId: number): Promise<Movie> => {
+  getDetailsMovie: async (movieId: string): Promise<Movie> => {
     const endpoint = DETAILS_MOVIE_BASE_URL(movieId);
     const data = await fetch(endpoint);
     const dataJson = await data.json();
@@ -37,12 +37,10 @@ const apiSettings = {
   ): Promise<Movies> =>
     getMovies(`${SEARCH_MOVIES_BASE_URL}${searchQuery}`, pageParam),
 
-  getSimilarMovies: async (
-    movieId: number,
-    { pageParam = 1 }: { pageParam?: number }
-  ): Promise<Movies> => getMovies(SIMILAR_MOVIES_BASE_URL(movieId), pageParam),
+  getSimilarMovies: async (movieId: string): Promise<Movies> =>
+    getMovies(SIMILAR_MOVIES_BASE_URL(movieId), 1),
 
-  getCreditsMovie: async (movieId: number): Promise<Credits> => {
+  getCreditsMovie: async (movieId: string): Promise<Credits> => {
     const endpoint = CREDITS_BASE_URL(movieId);
     const data = await fetch(endpoint);
     const dataJson = await data.json();
