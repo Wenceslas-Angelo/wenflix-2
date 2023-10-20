@@ -12,7 +12,7 @@ const MobileSideBar = () => {
     <div
       className={`fixed z-50 h-screen w-full bg-dark/50 top-0 ${
         isOpen ? 'right-0' : 'right-[-100vw]'
-      } transition-all overflow-auto`}
+      } transition-all overflow-hidden`}
     >
       <div className="bg-gray-200 flex justify-between p-5 rounded-xl absolute right-1 w-[95%] sm:w-[50%] h-[95vh] top-[50%] translate-y-[-50%]">
         <div>

@@ -4,7 +4,7 @@ import Logo from './Logo';
 
 const DesktopSideBar = () => {
   return (
-    <div className="px-5 pt-5 h-screen fixed overflow-auto">
+    <div className="px-5 pt-5 h-screen fixed overflow-hidden">
       <Logo />
       <Nav />
     </div>

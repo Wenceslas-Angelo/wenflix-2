@@ -4,7 +4,7 @@ import { Links } from '../../constants';
 
 const Nav = () => {
   return (
-    <nav className="flex flex-col h-[80vh] w-full mt-5 overflow-y-auto overflow-x-hidden nav-side-bar">
+    <nav className="flex flex-col h-[80vh] w-full mt-5 overflow-y-hidden overflow-x-hidden nav-side-bar">
       {Links.map((link) => (
         <NavLink
           to={link.path}

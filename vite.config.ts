@@ -3,6 +3,8 @@
 
 import react from '@vitejs/plugin-react';
 import { mergeConfig, defineConfig as defineViteConfig } from 'vite';
+import EnvironmentPlugin from 'vite-plugin-environment';
+
 import { defineConfig as defineVitestConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
@@ -15,7 +17,7 @@ const vitestConfig = defineVitestConfig({
 });
 
 const viteConfig = defineViteConfig({
-  plugins: [react()],
+  plugins: [react(), EnvironmentPlugin(['VITE_APP_API_KEY'])],
 });
 
-export default mergeConfig(vitestConfig, viteConfig);
+export default mergeConfig(viteConfig, vitestConfig);
