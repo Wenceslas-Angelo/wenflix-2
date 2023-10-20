@@ -6,7 +6,7 @@ import useUpcomingQuery from '../hooks/useUpcomingQuery';
 import useTopRatedQuery from '../hooks/useTopRatedQuery';
 
 // Components
-import MoviesOverview from '../components/MoviesOverview';
+import Movies from '../components/Movies';
 
 const Home = () => {
   const popularMovies = usePopularQuery();
@@ -14,9 +14,9 @@ const Home = () => {
   const topRatedMovies = useTopRatedQuery();
 
   return (
-    <div>
+    <>
       {popularMovies.data ? (
-        <MoviesOverview
+        <Movies
           header="Popular Movies"
           movies={popularMovies.data.results.slice(0, 10)}
           moreLink="popular"
@@ -24,7 +24,7 @@ const Home = () => {
       ) : null}
 
       {upcomingMovies.data ? (
-        <MoviesOverview
+        <Movies
           header="Upcoming Movies"
           movies={upcomingMovies.data.results.slice(0, 10)}
           moreLink="upcoming"
@@ -32,13 +32,13 @@ const Home = () => {
       ) : null}
 
       {topRatedMovies.data ? (
-        <MoviesOverview
+        <Movies
           header="Top rated Movies"
           movies={topRatedMovies.data.results.slice(0, 10)}
           moreLink="topRated"
         />
       ) : null}
-    </div>
+    </>
   );
 };
 

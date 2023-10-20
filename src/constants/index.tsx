@@ -1,68 +1,27 @@
-import React from "react";
-import { BiHomeAlt2 } from "react-icons/bi";
-import {
-  MdOutlineCollections,
-  MdOutlineReviews,
-  MdOutlineGames,
-} from "react-icons/md";
-import { BsDownload } from "react-icons/bs";
-import { IoGameControllerOutline } from "react-icons/io5";
-import { LiaHashtagSolid } from "react-icons/lia";
-import {
-  SiGamedeveloper,
-  SiSpringCreators,
-  SiGradleplaypublisher,
-} from "react-icons/si";
+import React from 'react';
+import { BiHomeAlt2 } from 'react-icons/bi';
+import { MdOutlineUpcoming, MdOutlineMovieFilter } from 'react-icons/md';
+import { BsStar } from 'react-icons/bs';
 
 export const Links = [
   {
-    name: "home",
-    path: "/",
+    name: 'home',
+    path: '/',
     icon: <BiHomeAlt2 />,
   },
   {
-    name: "reviews",
-    path: "/reviews",
-    icon: <MdOutlineReviews />,
+    name: 'popular',
+    path: '/category/popular',
+    icon: <MdOutlineMovieFilter />,
   },
   {
-    name: "collections",
-    path: "/collections",
-    icon: <MdOutlineCollections />,
+    name: 'upcoming',
+    path: '/category/upcoming',
+    icon: <MdOutlineUpcoming />,
   },
   {
-    name: "platforms",
-    path: "/platforms",
-    icon: <IoGameControllerOutline />,
-  },
-  {
-    name: "stores",
-    path: "/stores",
-    icon: <BsDownload />,
-  },
-  {
-    name: "genres",
-    path: "/genres",
-    icon: <MdOutlineGames />,
-  },
-  {
-    name: "Creators",
-    path: "/Creators",
-    icon: <SiSpringCreators />,
-  },
-  {
-    name: "Developers",
-    path: "/Developers",
-    icon: <SiGamedeveloper />,
-  },
-  {
-    name: "Tags",
-    path: "/Tags",
-    icon: <LiaHashtagSolid />,
-  },
-  {
-    name: "Publishers",
-    path: "/Publishers",
-    icon: <SiGradleplaypublisher />,
+    name: 'top rated',
+    path: '/category/top_rated',
+    icon: <BsStar />,
   },
 ];

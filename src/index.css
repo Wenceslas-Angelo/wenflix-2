@@ -2,18 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .nav-side-bar::-webkit-scrollbar {
-  width: 100%;
+nav a.active {
+  background-color: #0095f6;
+  color: white;
 }
-
-.nav-side-bar::-webkit-scrollbar-track {
-  background-color: #000;
-}
-
-.nav-side-bar::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-.nav-side-bar::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */

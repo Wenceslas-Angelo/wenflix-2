@@ -3,6 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 
 // Page
 import Home from './pages/Home';
+import Popular from './pages/Popular';
+import Upcoming from './pages/Upcoming';
+import TopRated from './pages/TopRated';
 import Movie from './pages/Movie';
 import NotFound from './pages/NotFound';
 
@@ -25,6 +28,9 @@ const App = () => {
           <div className="w-full p-2">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/category/popular" element={<Popular />} />
+              <Route path="/category/upcoming" element={<Upcoming />} />
+              <Route path="/category/top_rated" element={<TopRated />} />
               <Route path="/movie/:id" element={<Movie />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

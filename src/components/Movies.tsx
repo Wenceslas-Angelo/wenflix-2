@@ -13,13 +13,13 @@ import Banner from './Banner';
 import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from '../config';
 import noImage from '../assets/no-poster-available.jpg';
 
-type MoviesOverviewProps = {
+type MoviesProps = {
   header: string;
   movies: Movie[];
-  moreLink: string;
+  moreLink?: string;
 };
 
-const MoviesOverview = ({ header, movies, moreLink }: MoviesOverviewProps) => {
+const Movies = ({ header, movies, moreLink }: MoviesProps) => {
   return (
     <div>
       <Banner
@@ -48,20 +48,22 @@ const MoviesOverview = ({ header, movies, moreLink }: MoviesOverviewProps) => {
           ))}
         </Grid>
 
-        <div className="relative mt-5 mb-10">
-          <div className="bg-customBlue w-full h-[2px] absolute z-0 left-0 right-0 top-0 bottom-0  m-auto" />
-          <div className="flex justify-center items-center">
-            <Link
-              to={`/category/${moreLink}`}
-              className="uppercase z-10 relative font-semibold text-xl bg-customBlue text-white border border-green py-2 px-5"
-            >
-              VIEW MORE {header}
-            </Link>
+        {moreLink ? (
+          <div className="relative mt-5 mb-10">
+            <div className="bg-customBlue w-full h-[2px] absolute z-0 left-0 right-0 top-0 bottom-0  m-auto" />
+            <div className="flex justify-center items-center">
+              <Link
+                to={`/category/${moreLink}`}
+                className="uppercase z-10 relative font-semibold text-xl bg-customBlue text-white border border-green py-2 px-5"
+              >
+                VIEW MORE {header}
+              </Link>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
 };
 
-export default MoviesOverview;
+export default Movies;
