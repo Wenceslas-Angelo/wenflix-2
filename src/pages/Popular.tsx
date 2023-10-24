@@ -1,11 +1,15 @@
 import React from 'react';
-import Movies from '../components/Movies';
+
 import usePopularQuery from '../hooks/usePopularQuery';
+
+import Movies from '../components/Movies';
+import Spinner from '../components/Spinner';
 
 const Popular = () => {
   const popularMovies = usePopularQuery();
-  if (!popularMovies.data || popularMovies.isPending)
-    return <h1>LOADING...</h1>;
+  if (!popularMovies.data || popularMovies.isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>

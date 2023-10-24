@@ -7,37 +7,36 @@ import useTopRatedQuery from '../hooks/useTopRatedQuery';
 
 // Components
 import Movies from '../components/Movies';
+import Spinner from '../components/Spinner';
 
 const Home = () => {
   const popularMovies = usePopularQuery();
   const upcomingMovies = useUpcomingQuery();
   const topRatedMovies = useTopRatedQuery();
 
+  if (!popularMovies.data || !upcomingMovies.data || !topRatedMovies.data) {
+    return <Spinner />;
+  }
+
   return (
     <>
-      {popularMovies.data ? (
-        <Movies
-          header="Popular Movies"
-          movies={popularMovies.data.results.slice(0, 10)}
-          moreLink="popular"
-        />
-      ) : null}
+      <Movies
+        header="Popular Movies"
+        movies={popularMovies.data.results.slice(0, 10)}
+        moreLink="popular"
+      />
 
-      {upcomingMovies.data ? (
-        <Movies
-          header="Upcoming Movies"
-          movies={upcomingMovies.data.results.slice(0, 10)}
-          moreLink="upcoming"
-        />
-      ) : null}
+      <Movies
+        header="Upcoming Movies"
+        movies={upcomingMovies.data.results.slice(0, 10)}
+        moreLink="upcoming"
+      />
 
-      {topRatedMovies.data ? (
-        <Movies
-          header="Top rated Movies"
-          movies={topRatedMovies.data.results.slice(0, 10)}
-          moreLink="topRated"
-        />
-      ) : null}
+      <Movies
+        header="Top rated Movies"
+        movies={topRatedMovies.data.results.slice(0, 10)}
+        moreLink="topRated"
+      />
     </>
   );
 };

@@ -58,3 +58,7 @@ export interface Credits {
   cast: Cast[];
   crew: Crew[];
 }
+
+export interface Genres {
+  genres: [{ id: number; name: string }];
+}

@@ -7,11 +7,10 @@ import MovieMainInfo from '../components/Movie/MovieMainInfo';
 import SimilarMovies from '../components/Movie/SimilarMovies';
 import TopCast from '../components/Movie/TopCast';
 import TopCrew from '../components/Movie/TopCrew';
+import Spinner from '../components/Spinner';
 
 const Movie = () => {
   const { movieId } = useParams();
-
-  console.log(movieId);
 
   const { movie, isLoading, isError, credit } = useMovieQuery(
     movieId ? movieId : ''
@@ -22,7 +21,7 @@ const Movie = () => {
   }
 
   if (!movie || isLoading) {
-    return;
+    return <Spinner />;
   }
 
   return (

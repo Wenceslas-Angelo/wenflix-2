@@ -1,4 +1,4 @@
-import { Movies, Movie, Credits } from '../types';
+import { Movies, Movie, Credits, Genres } from '../types';
 import {
   POPULAR_BASE_URL,
   UPCOMING_BASE_URL,
@@ -7,6 +7,7 @@ import {
   SEARCH_MOVIES_BASE_URL,
   SIMILAR_MOVIES_BASE_URL,
   CREDITS_BASE_URL,
+  GENRES_BASE_URL,
 } from '../config';
 
 const getMovies = async (url: string, page: number): Promise<Movies> => {
@@ -45,6 +46,13 @@ const apiSettings = {
     const data = await fetch(endpoint);
     const dataJson = await data.json();
     return dataJson as Credits;
+  },
+
+  getGenres: async (): Promise<Genres> => {
+    const endpoint = GENRES_BASE_URL;
+    const data = await fetch(endpoint);
+    const dataJson = await data.json();
+    return dataJson as Genres;
   },
 };
 

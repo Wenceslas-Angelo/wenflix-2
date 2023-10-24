@@ -1,11 +1,11 @@
 import React from 'react';
-import Movies from '../components/Movies';
 import useUpcomingQuery from '../hooks/useUpcomingQuery';
+import Movies from '../components/Movies';
+import Spinner from '../components/Spinner';
 
 const Upcoming = () => {
   const upcomingMovies = useUpcomingQuery();
-  if (!upcomingMovies.data || upcomingMovies.isPending)
-    return <h1>LOADING...</h1>;
+  if (!upcomingMovies.data || upcomingMovies.isPending) return <Spinner />;
 
   return (
     <>

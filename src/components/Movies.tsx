@@ -12,6 +12,7 @@ import Banner from './Banner';
 // Utils
 import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from '../config';
 import noImage from '../assets/no-poster-available.jpg';
+import Genres from './Genres';
 
 type MoviesProps = {
   header: string;
@@ -30,7 +31,10 @@ const Movies = ({ header, movies, moreLink }: MoviesProps) => {
         releaseDate={movies[0].release_date}
       />
       <div>
-        <h1 className="mt-5 font-bold text-4xl text-center">{header}</h1>
+        <div className="mt-5 flex justify-between items-center mx-5">
+          <h1 className="font-bold text-4xl">{header}</h1>
+          <Genres />
+        </div>
         <Grid>
           {movies.map((movie) => (
             <Thumbnail

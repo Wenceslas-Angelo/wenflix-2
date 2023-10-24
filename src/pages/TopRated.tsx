@@ -1,11 +1,12 @@
 import React from 'react';
-import Movies from '../components/Movies';
 import useTopRatedQuery from '../hooks/useTopRatedQuery';
+
+import Movies from '../components/Movies';
+import Spinner from '../components/Spinner';
 
 const TopRated = () => {
   const topRatedMovies = useTopRatedQuery();
-  if (!topRatedMovies.data || topRatedMovies.isPending)
-    return <h1>LOADING...</h1>;
+  if (!topRatedMovies.data || topRatedMovies.isPending) return <Spinner />;
 
   return (
     <>
