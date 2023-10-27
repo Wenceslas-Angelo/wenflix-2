@@ -18,18 +18,26 @@ type MoviesProps = {
   header: string;
   movies: Movie[];
   moreLink?: string;
+  showBanner?: boolean;
 };
 
-const Movies = ({ header, movies, moreLink }: MoviesProps) => {
+const Movies = ({
+  header,
+  movies,
+  moreLink,
+  showBanner = true,
+}: MoviesProps) => {
   return (
     <div>
-      <Banner
-        title={movies[0].title}
-        overview={movies[0].overview}
-        image={IMAGE_BASE_URL + BACKDROP_SIZE + movies[0].backdrop_path}
-        voteAverage={movies[0].vote_average}
-        releaseDate={movies[0].release_date}
-      />
+      {showBanner ? (
+        <Banner
+          title={movies[0].title}
+          overview={movies[0].overview}
+          image={IMAGE_BASE_URL + BACKDROP_SIZE + movies[0].backdrop_path}
+          voteAverage={movies[0].vote_average}
+          releaseDate={movies[0].release_date}
+        />
+      ) : null}
       <div>
         <div className="mt-5 flex justify-between items-center mx-5">
           <h1 className="font-bold text-4xl">{header}</h1>

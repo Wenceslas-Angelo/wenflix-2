@@ -8,6 +8,7 @@ import SimilarMovies from '../components/Movie/SimilarMovies';
 import TopCast from '../components/Movie/TopCast';
 import TopCrew from '../components/Movie/TopCrew';
 import Spinner from '../components/Spinner';
+import Trailer from '../components/Movie/Trailer';
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -23,6 +24,10 @@ const Movie = () => {
   if (!movie || isLoading) {
     return <Spinner />;
   }
+
+  const trailler = movie.videos.results.find(
+    (video) => video.name === 'Official Trailer'
+  );
 
   return (
     <div>
@@ -50,6 +55,8 @@ const Movie = () => {
 
         <SimilarMovies movieId={movie.id} />
       </>
+
+      <Trailer videoId={trailler ? trailler.id : ''} />
     </div>
   );
 };
