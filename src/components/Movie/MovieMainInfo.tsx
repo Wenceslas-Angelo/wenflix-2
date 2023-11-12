@@ -49,7 +49,7 @@ const MovieMainInfo = ({
       style={bannerStyles}
       className="mx-3 mb-3 rounded-lg mt-2 min-h-screen"
     >
-      <div className="bg-[rgba(0,0,0,0.8)] rounded-xl flex h-full">
+      <div className="bg-light/90 rounded-xl flex min-h-screen">
         <div className="hidden lg:block">
           <Thumbnail
             image={

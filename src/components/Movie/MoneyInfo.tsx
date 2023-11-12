@@ -11,11 +11,11 @@ type MoneyInfoProps = {
 const MoneyInfo = ({ time, budget, revenue }: MoneyInfoProps) => {
   return (
     <div className="flex items-center flex-wrap justify-between md:justify-normal mt-10 font-medium">
-      <span className="text-xl text-light">Running time: {calcTime(time)}</span>
+      <span className="text-xl text-dark">Running time: {calcTime(time)}</span>
       <div className="hidden md:block w-[2px] mx-5 h-10 bg-primary" />
-      <span className="text-xl text-light">Budget: {convertMoney(budget)}</span>
+      <span className="text-xl text-dark">Budget: {convertMoney(budget)}</span>
       <div className="hidden md:block w-[2px] mx-5 h-10 bg-primary" />
-      <span className="text-xl text-light">
+      <span className="text-xl text-dark">
         Revenue: {convertMoney(revenue)}
       </span>
     </div>

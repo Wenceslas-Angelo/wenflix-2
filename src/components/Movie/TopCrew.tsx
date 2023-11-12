@@ -31,7 +31,7 @@ const TopCrew = ({ crews }: TopCrewProps) => {
         <div className="flex justify-center mt-5">
           <button
             onClick={() => setVisible(crews.length)}
-            className="border border-green  text-green px-10 py-3 text-xl font-semibold rounded-xl uppercase"
+            className="border bg-customBlue text-white px-10 py-3 text-xl font-semibold rounded-xl uppercase"
           >
             Load All Crews
           </button>
