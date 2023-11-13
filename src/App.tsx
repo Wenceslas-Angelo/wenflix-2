@@ -19,12 +19,13 @@ import SideBar from './components/SideBar';
 import Form from './components/Search/Form';
 import ModalResult from './components/Search/ModalResult';
 import Results from './pages/Results';
+import { useModalSearchStore } from './stores/useModalSearchStore';
+import Spinner from './components/Spinner';
 
 const App = () => {
   const { searchTerm } = useSearchStore();
-  const results = useSearchQuery(searchTerm ? searchTerm : 'black');
-
-  console.log(results);
+  const results = useSearchQuery(searchTerm);
+  const { isOpen } = useModalSearchStore();
 
   return (
     <>
@@ -37,15 +38,17 @@ const App = () => {
             <Form />
           </div>
 
-          {results.data ? (
+          {results.data?.results ? (
             <div
               className={`${
-                searchTerm.length > 2 ? 'block' : 'hidden'
+                isOpen ? 'block' : 'hidden'
               } absolute z-50 flex py-1 px-2 w-full md:w-[75%] lg:w-[80%] xl:w-[85%]`}
             >
               <ModalResult movies={results.data} />
             </div>
-          ) : null}
+          ) : (
+            <Spinner />
+          )}
 
           <div className="w-full p-2">
             <Routes>

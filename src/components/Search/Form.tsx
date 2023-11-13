@@ -1,23 +1,30 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { useSearchStore } from '../../stores/useSearchStore';
+import { useModalSearchStore } from '../../stores/useModalSearchStore';
 
 const Form = () => {
   const [query, setQuery] = useState('');
   const { setSearchTerm } = useSearchStore();
+  const { toggle, isOpen } = useModalSearchStore();
 
   const initial = useRef(true);
-
+  console.log(isOpen);
   useEffect(() => {
     if (initial.current) {
       initial.current = false;
       return undefined;
     }
+
+    query.length > 2 ? toggle(true) : toggle(false);
+
     const timer = setTimeout(() => {
-      if (query.length > 2) setSearchTerm(query);
+      if (query.length > 2) {
+        setSearchTerm(query);
+      }
     }, 500);
     return () => clearTimeout(timer);
-  }, [setSearchTerm, query]);
+  }, [setSearchTerm, query, toggle]);
 
   return (
     <form className="w-full relative">

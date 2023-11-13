@@ -32,7 +32,7 @@ const Banner = ({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
-      className="mx-3 mb-3 rounded-lg mt-2 min-h-screen relative"
+      className="mx-3 mb-3 rounded-lg mt-2 min-h-[150vh] sm:min-h-screen relative"
     >
       <div className="mx-auto p-5">
         <div className="absolute bottom-10 max-w-3xl">

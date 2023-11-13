@@ -2,13 +2,11 @@ import React from 'react';
 
 import useGenresQuery from '../hooks/useGenresQuery';
 
-import Spinner from './Spinner';
-
 const Genres = () => {
   const genres = useGenresQuery();
 
   if (!genres.data) {
-    return <Spinner />;
+    return;
   }
 
   return (

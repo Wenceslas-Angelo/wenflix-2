@@ -13,7 +13,10 @@ const Results = () => {
 
   return (
     <>
-      <Movies header="Popular Movies" movies={results.data.results} />
+      <Movies
+        header={`Results Movies for "${searchTerm}"`}
+        movies={results.data.results}
+      />
     </>
   );
 };
