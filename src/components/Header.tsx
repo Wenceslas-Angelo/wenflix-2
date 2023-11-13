@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaBarsStaggered, FaSun } from 'react-icons/fa6';
-import Search from './Search';
 import { useSideBarStore } from '../stores/useSideBarStore';
 import { BiLogIn } from 'react-icons/bi';
+import Form from './Search/Form';
 
 const Header = () => {
   const { toggle } = useSideBarStore();
@@ -13,7 +13,7 @@ const Header = () => {
         <FaSun color="#FFFF00" fontSize={30} />
       </div>
       <div className="w-[50%] hidden sm:flex">
-        <Search />
+        <Form />
       </div>
 
       <div className="md:hidden" onClick={() => toggle()}>

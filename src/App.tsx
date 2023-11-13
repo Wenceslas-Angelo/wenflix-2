@@ -1,6 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+// Hooks
+import { useSearchStore } from './stores/useSearchStore';
+import useSearchQuery from './hooks/useSearchMovies';
+
 // Page
 import Home from './pages/Home';
 import Popular from './pages/Popular';
@@ -12,9 +16,16 @@ import NotFound from './pages/NotFound';
 // Components
 import Header from './components/Header';
 import SideBar from './components/SideBar';
-import Search from './components/Search';
+import Form from './components/Search/Form';
+import ModalResult from './components/Search/ModalResult';
+import Results from './pages/Results';
 
 const App = () => {
+  const { searchTerm } = useSearchStore();
+  const results = useSearchQuery(searchTerm ? searchTerm : 'black');
+
+  console.log(results);
+
   return (
     <>
       <div className="flex">
@@ -22,9 +33,20 @@ const App = () => {
 
         <div className="md:ml-[25%] lg:ml-[20%] xl:ml-[15%] w-full">
           <Header />
-          <div className="sm:hidden bg-secondary py-5 px-2">
-            <Search />
+          <div className="sm:hidden bg-light py-5 px-2">
+            <Form />
           </div>
+
+          {results.data ? (
+            <div
+              className={`${
+                searchTerm.length > 2 ? 'block' : 'hidden'
+              } absolute z-50 flex py-1 px-2 w-full md:w-[75%] lg:w-[80%] xl:w-[85%]`}
+            >
+              <ModalResult movies={results.data} />
+            </div>
+          ) : null}
+
           <div className="w-full p-2">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -32,6 +54,7 @@ const App = () => {
               <Route path="/category/upcoming" element={<Upcoming />} />
               <Route path="/category/top_rated" element={<TopRated />} />
               <Route path="/movie/:movieId" element={<Movie />} />
+              <Route path="/results" element={<Results />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

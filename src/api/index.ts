@@ -32,11 +32,8 @@ const apiSettings = {
     return dataJson as Movie;
   },
 
-  getSearchMovies: async (
-    searchQuery: string,
-    { pageParam = 1 }: { pageParam?: number }
-  ): Promise<Movies> =>
-    getMovies(`${SEARCH_MOVIES_BASE_URL}${searchQuery}`, pageParam),
+  getSearchMovies: async (searchQuery: string): Promise<Movies> =>
+    getMovies(`${SEARCH_MOVIES_BASE_URL}${searchQuery}`, 1),
 
   getSimilarMovies: async (movieId: string): Promise<Movies> =>
     getMovies(SIMILAR_MOVIES_BASE_URL(movieId), 1),
