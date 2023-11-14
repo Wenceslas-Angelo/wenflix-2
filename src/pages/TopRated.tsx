@@ -10,7 +10,11 @@ const TopRated = () => {
 
   return (
     <>
-      <Movies header="Top Rated Movies" movies={topRatedMovies} />
+      <Movies
+        header="Top Rated Movies"
+        movies={topRatedMovies}
+        showGenre={false}
+      />
     </>
   );
 };

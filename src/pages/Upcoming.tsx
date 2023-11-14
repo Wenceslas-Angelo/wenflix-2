@@ -9,7 +9,11 @@ const Upcoming = () => {
 
   return (
     <>
-      <Movies header="Upcoming Movies" movies={upcomingMovies} />
+      <Movies
+        header="Upcoming Movies"
+        movies={upcomingMovies}
+        showGenre={false}
+      />
     </>
   );
 };
