@@ -48,36 +48,17 @@ const Movies = ({
   isInfiniteScroll = true,
 }: Props) => {
   if (!movies.data) return;
-  const moviesData = movies.data.pages.flatMap((page) => page.results);
-  console.log(movies.data.pageParams);
-  const GridComponent = (
-    <Grid>
-      {moviesData.map((movie) => (
-        <Thumbnail
-          key={movie.id}
-          movieId={movie.id}
-          voteAverage={movie.vote_average}
-          title={movie.title}
-          clickable
-          image={
-            movie.poster_path
-              ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
-              : noImage
-          }
-        />
-      ))}
-    </Grid>
-  );
+  const movieData0 = movies.data.pages[0].results[0];
 
   return (
     <div>
       {showBanner ? (
         <Banner
-          title={moviesData[0].title}
-          overview={moviesData[0].overview}
-          image={IMAGE_BASE_URL + BACKDROP_SIZE + moviesData[0].backdrop_path}
-          voteAverage={moviesData[0].vote_average}
-          releaseDate={moviesData[0].release_date}
+          title={movieData0.title}
+          overview={movieData0.overview}
+          image={IMAGE_BASE_URL + BACKDROP_SIZE + movieData0.backdrop_path}
+          voteAverage={movieData0.vote_average}
+          releaseDate={movieData0.release_date}
         />
       ) : null}
       <div>
@@ -93,10 +74,42 @@ const Movies = ({
             hasMore={!!movies.hasNextPage}
             loader={<Spinner />}
           >
-            {GridComponent}
+            {movies.data.pages.map((page, index) => (
+              <Grid key={index}>
+                {page.results.map((movie) => (
+                  <Thumbnail
+                    key={movie.id}
+                    movieId={movie.id}
+                    voteAverage={movie.vote_average}
+                    title={movie.title}
+                    clickable
+                    image={
+                      movie.poster_path
+                        ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                        : noImage
+                    }
+                  />
+                ))}
+              </Grid>
+            ))}
           </InfiniteScroll>
         ) : (
-          GridComponent
+          <Grid>
+            {movies.data.pages[0].results.slice(0, 10).map((movie) => (
+              <Thumbnail
+                key={movie.id}
+                movieId={movie.id}
+                voteAverage={movie.vote_average}
+                title={movie.title}
+                clickable
+                image={
+                  movie.poster_path
+                    ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                    : noImage
+                }
+              />
+            ))}
+          </Grid>
         )}
 
         {moreLink ? (
