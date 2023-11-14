@@ -6,9 +6,10 @@ import { Movies } from '../types';
 const useSearchQuery = (query: string) => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery<Movies>({
-      queryKey: ['search'],
+      queryKey: ['search', query],
       initialPageParam: 1,
       queryFn: ({ pageParam }) => getSearchMovies(pageParam, query),
+      enabled: query.length >= 3,
       getNextPageParam: (lastPage) => lastPage.page + 1,
     });
   return {
