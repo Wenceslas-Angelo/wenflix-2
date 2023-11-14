@@ -53,7 +53,7 @@ const Movie = () => {
           </div>
         ) : null}
 
-        <SimilarMovies movieId={movie.id} />
+        <SimilarMovies movieId={movie.id.toString()} />
       </>
 
       <Trailer videoId={trailler ? trailler.id : ''} />
