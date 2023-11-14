@@ -24,18 +24,24 @@ const Home = () => {
         header="Popular Movies"
         movies={popularMovies.data.results.slice(0, 10)}
         moreLink="popular"
+        showBanner={false}
+        showGenre={false}
       />
 
       <Movies
         header="Upcoming Movies"
         movies={upcomingMovies.data.results.slice(0, 10)}
         moreLink="upcoming"
+        showBanner={false}
+        showGenre={false}
       />
 
       <Movies
         header="Top rated Movies"
         movies={topRatedMovies.data.results.slice(0, 10)}
         moreLink="topRated"
+        showBanner={false}
+        showGenre={false}
       />
     </>
   );

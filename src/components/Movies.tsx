@@ -19,6 +19,7 @@ type MoviesProps = {
   movies: Movie[];
   moreLink?: string;
   showBanner?: boolean;
+  showGenre?: boolean;
 };
 
 const Movies = ({
@@ -26,6 +27,7 @@ const Movies = ({
   movies,
   moreLink,
   showBanner = true,
+  showGenre = true,
 }: MoviesProps) => {
   return (
     <div>
@@ -41,7 +43,7 @@ const Movies = ({
       <div>
         <div className="mt-5 flex justify-between items-center mx-5">
           <h1 className="font-bold text-4xl">{header}</h1>
-          <Genres />
+          {showGenre ? <Genres /> : null}
         </div>
         <Grid>
           {movies.map((movie) => (

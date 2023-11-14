@@ -19,6 +19,7 @@ const Results = () => {
       <Movies
         header={`Results Movies for "${searchTerm}"`}
         movies={results.data.results}
+        showBanner={false}
       />
     </>
   );

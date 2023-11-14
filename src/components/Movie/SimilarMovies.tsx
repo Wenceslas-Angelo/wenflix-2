@@ -19,6 +19,7 @@ const SimilarMovies = ({ movieId }: SimilarMoviesProps) => {
         header="Similar Movies"
         movies={similarMovies.data.results}
         showBanner={false}
+        showGenre={false}
       />
     </>
   );
