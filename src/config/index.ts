@@ -21,7 +21,7 @@ const CREDITS_BASE_URL = (movieId: string) =>
 
 const GENRES_BASE_URL = `${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`;
 
-const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/';
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';
 // w92, w154, w185, w342, w500, w780, original
