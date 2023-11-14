@@ -22,26 +22,29 @@ const Home = () => {
     <>
       <Movies
         header="Popular Movies"
-        movies={popularMovies.data.results.slice(0, 10)}
+        movies={popularMovies}
         moreLink="popular"
         showBanner={false}
         showGenre={false}
+        isInfiniteScroll={false}
       />
 
       <Movies
         header="Upcoming Movies"
-        movies={upcomingMovies.data.results.slice(0, 10)}
+        movies={upcomingMovies}
         moreLink="upcoming"
         showBanner={false}
         showGenre={false}
+        isInfiniteScroll={false}
       />
 
       <Movies
         header="Top rated Movies"
-        movies={topRatedMovies.data.results.slice(0, 10)}
+        movies={topRatedMovies}
         moreLink="topRated"
         showBanner={false}
         showGenre={false}
+        isInfiniteScroll={false}
       />
     </>
   );

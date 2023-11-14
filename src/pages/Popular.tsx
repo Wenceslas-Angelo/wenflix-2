@@ -7,13 +7,17 @@ import Spinner from '../components/Spinner';
 
 const Popular = () => {
   const popularMovies = usePopularQuery();
-  if (!popularMovies.data || popularMovies.isLoading) {
+  if (!popularMovies.data) {
     return <Spinner />;
   }
 
   return (
     <>
-      <Movies header="Popular Movies" movies={popularMovies.data.results} />
+      <Movies
+        header="Popular Movies"
+        movies={popularMovies}
+        isInfiniteScroll={true}
+      />
     </>
   );
 };

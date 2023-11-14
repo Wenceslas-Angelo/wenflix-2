@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import {
+  FetchNextPageOptions,
+  InfiniteData,
+  InfiniteQueryObserverResult,
+} from '@tanstack/react-query';
 
 // Types
-import { Movie } from '../types';
+import { Movies as MoviesType } from '../types';
 
 // Components
 import Grid from './Grid';
@@ -13,13 +19,24 @@ import Banner from './Banner';
 import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from '../config';
 import noImage from '../assets/no-poster-available.jpg';
 import Genres from './Genres';
+import Spinner from './Spinner';
 
-type MoviesProps = {
+type Props = {
   header: string;
-  movies: Movie[];
+  movies: {
+    data: InfiniteData<MoviesType, unknown> | undefined;
+    fetchNextPage: (
+      options?: FetchNextPageOptions | undefined
+    ) => Promise<
+      InfiniteQueryObserverResult<InfiniteData<MoviesType, unknown>, Error>
+    >;
+    hasNextPage: boolean;
+    isFetchingNextPage: boolean;
+  };
   moreLink?: string;
   showBanner?: boolean;
   showGenre?: boolean;
+  isInfiniteScroll?: boolean;
 };
 
 const Movies = ({
@@ -28,16 +45,39 @@ const Movies = ({
   moreLink,
   showBanner = true,
   showGenre = true,
-}: MoviesProps) => {
+  isInfiniteScroll = true,
+}: Props) => {
+  if (!movies.data) return;
+  const moviesData = movies.data.pages.flatMap((page) => page.results);
+
+  const GridComponent = (
+    <Grid>
+      {moviesData.map((movie) => (
+        <Thumbnail
+          key={movie.id}
+          movieId={movie.id}
+          voteAverage={movie.vote_average}
+          title={movie.title}
+          clickable
+          image={
+            movie.poster_path
+              ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+              : noImage
+          }
+        />
+      ))}
+    </Grid>
+  );
+
   return (
     <div>
       {showBanner ? (
         <Banner
-          title={movies[0].title}
-          overview={movies[0].overview}
-          image={IMAGE_BASE_URL + BACKDROP_SIZE + movies[0].backdrop_path}
-          voteAverage={movies[0].vote_average}
-          releaseDate={movies[0].release_date}
+          title={moviesData[0].title}
+          overview={moviesData[0].overview}
+          image={IMAGE_BASE_URL + BACKDROP_SIZE + moviesData[0].backdrop_path}
+          voteAverage={moviesData[0].vote_average}
+          releaseDate={moviesData[0].release_date}
         />
       ) : null}
       <div>
@@ -45,22 +85,19 @@ const Movies = ({
           <h1 className="font-bold text-4xl">{header}</h1>
           {showGenre ? <Genres /> : null}
         </div>
-        <Grid>
-          {movies.map((movie) => (
-            <Thumbnail
-              key={movie.id}
-              movieId={movie.id}
-              voteAverage={movie.vote_average}
-              title={movie.title}
-              clickable
-              image={
-                movie.poster_path
-                  ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
-                  : noImage
-              }
-            />
-          ))}
-        </Grid>
+
+        {isInfiniteScroll ? (
+          <InfiniteScroll
+            dataLength={movies.data?.pages.length || 0}
+            next={movies.fetchNextPage}
+            hasMore={!!movies.hasNextPage}
+            loader={<Spinner />}
+          >
+            {GridComponent}
+          </InfiniteScroll>
+        ) : (
+          GridComponent
+        )}
 
         {moreLink ? (
           <div className="relative mt-5 mb-10">

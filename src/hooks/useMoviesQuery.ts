@@ -1,14 +1,16 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { getSearchMovies } from '../api';
 import { Movies } from '../types';
 
-const useSearchQuery = (query: string) => {
+const useMoviesQuery = (
+  moviesKey: string,
+  getMoviesFn: (pageParam: unknown) => Promise<Movies>
+) => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery<Movies>({
-      queryKey: ['search'],
+      queryKey: [moviesKey],
       initialPageParam: 1,
-      queryFn: ({ pageParam }) => getSearchMovies(pageParam, query),
+      queryFn: ({ pageParam }) => getMoviesFn(pageParam),
       getNextPageParam: (lastPage) => lastPage.page + 1,
     });
   return {
@@ -19,4 +21,4 @@ const useSearchQuery = (query: string) => {
   };
 };
 
-export default useSearchQuery;
+export default useMoviesQuery;

@@ -1,14 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { getPopularMovies } from '../api';
+import useMoviesQuery from './useMoviesQuery';
 
-import API from '../api';
-import { Movies } from '../types';
-
-const usePopularQuery = () => {
-  const { data, error, isLoading } = useQuery<Movies>({
-    queryKey: ['popular'],
-    queryFn: API.getPopularMovies,
-  });
-  return { data, error, isLoading };
-};
+const usePopularQuery = () => useMoviesQuery('popular', getPopularMovies);
 
 export default usePopularQuery;

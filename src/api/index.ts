@@ -10,47 +10,52 @@ import {
   GENRES_BASE_URL,
 } from '../config';
 
-const getMovies = async (url: string, page: number): Promise<Movies> => {
+const getMovies = async (
+  url: string,
+  page: number | unknown
+): Promise<Movies> => {
   const data = await fetch(`${url}&page=${page}`);
   const dataJson = await data.json();
   return dataJson as Movies;
 };
 
-const apiSettings = {
-  getPopularMovies: async (): Promise<Movies> => getMovies(POPULAR_BASE_URL, 1),
+export const getPopularMovies = async (pageParam: unknown): Promise<Movies> =>
+  getMovies(POPULAR_BASE_URL, pageParam);
 
-  getUpcomingMovies: async (): Promise<Movies> =>
-    getMovies(UPCOMING_BASE_URL, 1),
+export const getUpcomingMovies = async (): Promise<Movies> =>
+  getMovies(UPCOMING_BASE_URL, 1);
 
-  getTopRatedMovies: async (): Promise<Movies> =>
-    getMovies(TOP_RATED_BASE_URL, 1),
+export const getTopRatedMovies = async (): Promise<Movies> =>
+  getMovies(TOP_RATED_BASE_URL, 1);
 
-  getDetailsMovie: async (movieId: string): Promise<Movie> => {
-    const endpoint = DETAILS_MOVIE_BASE_URL(movieId);
-    const data = await fetch(endpoint);
-    const dataJson = await data.json();
-    return dataJson as Movie;
-  },
-
-  getSearchMovies: async (searchQuery: string): Promise<Movies> =>
-    getMovies(`${SEARCH_MOVIES_BASE_URL}${searchQuery}`, 1),
-
-  getSimilarMovies: async (movieId: string): Promise<Movies> =>
-    getMovies(SIMILAR_MOVIES_BASE_URL(movieId), 1),
-
-  getCreditsMovie: async (movieId: string): Promise<Credits> => {
-    const endpoint = CREDITS_BASE_URL(movieId);
-    const data = await fetch(endpoint);
-    const dataJson = await data.json();
-    return dataJson as Credits;
-  },
-
-  getGenres: async (): Promise<Genres> => {
-    const endpoint = GENRES_BASE_URL;
-    const data = await fetch(endpoint);
-    const dataJson = await data.json();
-    return dataJson as Genres;
-  },
+export const getDetailsMovie = async (movieId: string): Promise<Movie> => {
+  const endpoint = DETAILS_MOVIE_BASE_URL(movieId);
+  const data = await fetch(endpoint);
+  const dataJson = await data.json();
+  return dataJson as Movie;
 };
 
-export default apiSettings;
+export const getSearchMovies = async (
+  pageParam: unknown,
+  searchQuery: string
+): Promise<Movies> =>
+  getMovies(`${SEARCH_MOVIES_BASE_URL}${searchQuery}`, pageParam);
+
+export const getSimilarMovies = async (
+  pageParam: unknown,
+  movieId: string
+): Promise<Movies> => getMovies(SIMILAR_MOVIES_BASE_URL(movieId), pageParam);
+
+export const getCreditsMovie = async (movieId: string): Promise<Credits> => {
+  const endpoint = CREDITS_BASE_URL(movieId);
+  const data = await fetch(endpoint);
+  const dataJson = await data.json();
+  return dataJson as Credits;
+};
+
+export const getGenres = async (): Promise<Genres> => {
+  const endpoint = GENRES_BASE_URL;
+  const data = await fetch(endpoint);
+  const dataJson = await data.json();
+  return dataJson as Genres;
+};

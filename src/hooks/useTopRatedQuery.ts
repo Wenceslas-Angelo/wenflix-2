@@ -1,14 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { getTopRatedMovies } from '../api';
+import useMoviesQuery from './useMoviesQuery';
 
-import API from '../api';
-import { Movies } from '../types';
-
-const useTopRatedQuery = () => {
-  const { data, error, isPending } = useQuery<Movies>({
-    queryKey: ['topRated'],
-    queryFn: API.getTopRatedMovies,
-  });
-  return { data, error, isPending };
-};
+const useTopRatedQuery = () => useMoviesQuery('topRated', getTopRatedMovies);
 
 export default useTopRatedQuery;

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Movie, Credits } from '../types';
-import API from '../api';
+import { getDetailsMovie, getCreditsMovie } from '../api';
 
 const useMovieQuery = (movieId: string) => {
   const {
@@ -9,12 +9,12 @@ const useMovieQuery = (movieId: string) => {
     isError,
   } = useQuery<Movie>({
     queryKey: ['movieDetails', movieId],
-    queryFn: () => API.getDetailsMovie(movieId),
+    queryFn: () => getDetailsMovie(movieId),
   });
 
   const { data: credit } = useQuery<Credits>({
     queryKey: ['movieCredits', movieId],
-    queryFn: () => API.getCreditsMovie(movieId),
+    queryFn: () => getCreditsMovie(movieId),
   });
   return {
     movie,

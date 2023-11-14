@@ -6,11 +6,11 @@ import Spinner from '../components/Spinner';
 
 const TopRated = () => {
   const topRatedMovies = useTopRatedQuery();
-  if (!topRatedMovies.data || topRatedMovies.isPending) return <Spinner />;
+  if (!topRatedMovies.data) return <Spinner />;
 
   return (
     <>
-      <Movies header="Popular Movies" movies={topRatedMovies.data.results} />
+      <Movies header="Popular Movies" movies={topRatedMovies} />
     </>
   );
 };

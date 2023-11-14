@@ -10,7 +10,7 @@ const Results = () => {
   const { searchTerm } = useSearchStore();
   const results = useSearchQuery(params.query ? params.query : searchTerm);
 
-  if (!results.data || results.isLoading) {
+  if (!results.data) {
     return <Spinner />;
   }
 
@@ -18,7 +18,7 @@ const Results = () => {
     <>
       <Movies
         header={`Results Movies for "${searchTerm}"`}
-        movies={results.data.results}
+        movies={results}
         showBanner={false}
       />
     </>
