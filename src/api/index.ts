@@ -8,6 +8,7 @@ import {
   SIMILAR_MOVIES_BASE_URL,
   CREDITS_BASE_URL,
   GENRES_BASE_URL,
+  GENRE_MOVIES_BASE_URL,
 } from '../config';
 
 const getMovies = async (
@@ -40,6 +41,12 @@ export const getSearchMovies = async (
   searchQuery: string
 ): Promise<Movies> =>
   getMovies(`${SEARCH_MOVIES_BASE_URL}${searchQuery}`, pageParam);
+
+export const getMoviesByGenre = async (
+  pageParam: unknown,
+  genreId: string
+): Promise<Movies> =>
+  getMovies(`${GENRE_MOVIES_BASE_URL}${genreId}`, pageParam);
 
 export const getSimilarMovies = async (
   pageParam: unknown,

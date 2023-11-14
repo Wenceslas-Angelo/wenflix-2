@@ -17,7 +17,6 @@ const Popular = () => {
         header="Popular Movies"
         movies={popularMovies}
         isInfiniteScroll={true}
-        showGenre={false}
       />
     </>
   );

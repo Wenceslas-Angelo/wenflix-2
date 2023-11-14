@@ -18,7 +18,6 @@ import Banner from './Banner';
 // Utils
 import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from '../config';
 import noImage from '../assets/no-poster-available.jpg';
-import Genres from './Genres';
 import Spinner from './Spinner';
 
 type Props = {
@@ -35,7 +34,6 @@ type Props = {
   };
   moreLink?: string;
   showBanner?: boolean;
-  showGenre?: boolean;
   isInfiniteScroll?: boolean;
 };
 
@@ -44,7 +42,6 @@ const Movies = ({
   movies,
   moreLink,
   showBanner = true,
-  showGenre = true,
   isInfiniteScroll = true,
 }: Props) => {
   if (!movies.data) return;
@@ -64,7 +61,6 @@ const Movies = ({
       <div>
         <div className="mt-5 flex justify-between items-center mx-5">
           <h1 className="font-bold text-4xl">{header}</h1>
-          {showGenre ? <Genres /> : null}
         </div>
 
         {isInfiniteScroll ? (

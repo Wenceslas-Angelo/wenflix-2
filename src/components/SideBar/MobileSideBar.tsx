@@ -10,11 +10,14 @@ const MobileSideBar = () => {
   const { isOpen, toggle } = useSideBarStore();
   return (
     <div
-      className={`fixed z-50 h-screen w-full bg-dark/50 top-0 ${
+      className={`fixed z-50 min-h-screen w-full bg-dark/50 top-0 ${
         isOpen ? 'right-0' : 'right-[-100vw]'
-      } transition-all overflow-hidden`}
+      } transition-all overflow-auto custom-scrollbar`}
     >
-      <div className="bg-gray-200 flex justify-between p-5 rounded-xl absolute right-1 w-[95%] sm:w-[50%] h-[95vh] top-[50%] translate-y-[-50%]">
+      <div
+        className="bg-gray-200 flex justify-between p-5 rounded-xl 
+      absolute right-1 top-0 w-[95%] sm:w-[50%]"
+      >
         <div>
           <Logo />
           <Nav />

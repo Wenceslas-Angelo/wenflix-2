@@ -20,7 +20,6 @@ const Results = () => {
         header={`Results Movies for "${searchTerm}"`}
         movies={results}
         showBanner={false}
-        showGenre={false}
       />
     </>
   );

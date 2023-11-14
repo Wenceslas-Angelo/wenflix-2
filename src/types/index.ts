@@ -5,9 +5,13 @@ export interface Movies {
   total_results: number;
 }
 
+export interface GenreName {
+  [key: string]: string;
+}
+
 export interface Genres {
   id: number;
-  name: string;
+  name: GenreName;
 }
 
 export interface Videos {
