@@ -24,7 +24,7 @@ export interface Movie {
   poster_path: string;
   backdrop_path: string;
   vote_average: number;
-  genres: Genres[];
+  genres: Genre[];
   runtime: number;
   budget: number;
   revenue: number;
@@ -54,6 +54,11 @@ export interface Credits {
   crew: Crew[];
 }
 
+export interface Genre {
+  id: number;
+  name: string;
+}
+
 export interface Genres {
-  genres: [{ id: number; name: string }];
+  genres: Genre[];
 }

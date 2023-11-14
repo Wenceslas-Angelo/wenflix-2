@@ -1,11 +1,11 @@
 import React from 'react';
 import Rating from '../Rating';
-import { Genres } from '../../types';
+import { Genre } from '../../types';
 
 type MovieInfoProps = {
   title: string;
   voteAverage: number;
-  genres: Genres[];
+  genres: Genre[];
   overview: string;
 };
 

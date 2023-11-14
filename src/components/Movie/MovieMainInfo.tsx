@@ -2,7 +2,7 @@ import React from 'react';
 import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from '../../config';
 import Thumbnail from '../Thumbnail';
 import noImage from '../../assets/no-poster-available.jpg';
-import { Genres } from '../../types';
+import { Genre } from '../../types';
 import MoneyInfo from './MoneyInfo';
 import ExternalLink from './ExternalLink';
 import MovieInfo from './MovieInfo';
@@ -13,7 +13,7 @@ type MovieInfoProps = {
   title: string;
   overview: string;
   voteAverage: number;
-  genres: Genres[];
+  genres: Genre[];
   time: number;
   budget: number;
   revenue: number;
