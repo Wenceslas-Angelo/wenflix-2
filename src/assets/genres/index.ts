@@ -22,7 +22,11 @@ import popular from './popular.png';
 import topRated from './top rated.png';
 import upcoming from './upcoming.png';
 
-export default {
+interface GenreIcons {
+  [key: string]: string;
+}
+
+const genreIcons: GenreIcons = {
   action,
   adventure,
   animation,
@@ -46,3 +50,5 @@ export default {
   'top rated': topRated,
   upcoming,
 };
+
+export default genreIcons;
