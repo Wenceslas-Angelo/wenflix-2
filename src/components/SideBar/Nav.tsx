@@ -11,6 +11,8 @@ const Nav = () => {
   const { toggle } = useSideBarStore();
   const genres = useGenresQuery();
 
+  console.log(genres);
+
   return (
     <nav className="flex flex-col w-full mt-5 nav-side-bar overflow-auto">
       <NavLink
@@ -28,7 +30,7 @@ const Nav = () => {
       <h2 className="mt-5 mb-2 text-2xl font-bold">Categories</h2>
       {Links.map((link) => (
         <NavLink
-          to={link.path}
+          to={`/category/${link.name}`}
           key={link.name}
           className={`capitalize text-xl font-medium p-1 flex items-center
                rounded-md px-2 mb-5`}

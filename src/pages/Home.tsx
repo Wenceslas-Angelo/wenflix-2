@@ -1,18 +1,16 @@
 import React from 'react';
 
 // Hooks
-import usePopularQuery from '../hooks/usePopularQuery';
-import useUpcomingQuery from '../hooks/useUpcomingQuery';
-import useTopRatedQuery from '../hooks/useTopRatedQuery';
+import useCategoryMoviesQuery from '../hooks/useCategoryMoviesQuery';
 
 // Components
 import Movies from '../components/Movies';
 import Spinner from '../components/Spinner';
 
 const Home = () => {
-  const popularMovies = usePopularQuery();
-  const upcomingMovies = useUpcomingQuery();
-  const topRatedMovies = useTopRatedQuery();
+  const popularMovies = useCategoryMoviesQuery('popular');
+  const upcomingMovies = useCategoryMoviesQuery('upcoming');
+  const topRatedMovies = useCategoryMoviesQuery('top rated');
 
   if (!popularMovies.data || !upcomingMovies.data || !topRatedMovies.data) {
     return <Spinner />;
@@ -25,7 +23,6 @@ const Home = () => {
         movies={popularMovies}
         moreLink="popular"
         showBanner={false}
-        showGenre={false}
         isInfiniteScroll={false}
       />
 
@@ -34,7 +31,6 @@ const Home = () => {
         movies={upcomingMovies}
         moreLink="upcoming"
         showBanner={false}
-        showGenre={false}
         isInfiniteScroll={false}
       />
 
@@ -43,7 +39,6 @@ const Home = () => {
         movies={topRatedMovies}
         moreLink="topRated"
         showBanner={false}
-        showGenre={false}
         isInfiniteScroll={false}
       />
     </>

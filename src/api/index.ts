@@ -20,14 +20,31 @@ const getMovies = async (
   return dataJson as Movies;
 };
 
-export const getPopularMovies = async (pageParam: unknown): Promise<Movies> =>
+const getPopularMovies = async (pageParam: unknown): Promise<Movies> =>
   getMovies(POPULAR_BASE_URL, pageParam);
 
-export const getUpcomingMovies = async (): Promise<Movies> =>
-  getMovies(UPCOMING_BASE_URL, 1);
+const getUpcomingMovies = async (pageParam: unknown): Promise<Movies> =>
+  getMovies(UPCOMING_BASE_URL, pageParam);
 
-export const getTopRatedMovies = async (): Promise<Movies> =>
-  getMovies(TOP_RATED_BASE_URL, 1);
+const getTopRatedMovies = async (pageParam: unknown): Promise<Movies> =>
+  getMovies(TOP_RATED_BASE_URL, pageParam);
+
+export const getMoviesByCategory = async (
+  pageParam: unknown,
+  categoryName: string
+): Promise<Movies> => {
+  switch (categoryName) {
+    case 'top rated':
+      return await getTopRatedMovies(pageParam);
+      break;
+    case 'upcoming':
+      return await getUpcomingMovies(pageParam);
+      break;
+    default:
+      return await getPopularMovies(pageParam);
+      break;
+  }
+};
 
 export const getDetailsMovie = async (movieId: string): Promise<Movie> => {
   const endpoint = DETAILS_MOVIE_BASE_URL(movieId);

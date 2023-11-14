@@ -3,9 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 // Page
 import Home from './pages/Home';
-import Popular from './pages/Popular';
-import Upcoming from './pages/Upcoming';
-import TopRated from './pages/TopRated';
+import Category from './pages/Category';
 import Movie from './pages/Movie';
 import NotFound from './pages/NotFound';
 import Genre from './pages/Genre';
@@ -33,9 +31,7 @@ const App = () => {
           <div className="w-full p-2">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/category/popular" element={<Popular />} />
-              <Route path="/category/upcoming" element={<Upcoming />} />
-              <Route path="/category/top_rated" element={<TopRated />} />
+              <Route path="/category/:name" element={<Category />} />
               <Route path="/movie/:movieId" element={<Movie />} />
               <Route path="/results/:query" element={<Results />} />
               <Route path="/genre/:genreName/:genreId" element={<Genre />} />

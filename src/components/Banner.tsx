@@ -22,20 +22,15 @@ const Banner = ({
   return (
     <div
       style={{
-        background: `linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.6) 41%,
-        rgba(0, 0, 0, 1) 100%
-      ),
-      url(${image})`,
+        backgroundImage: `url(${image})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
       className="mx-3 mb-3 rounded-lg mt-2 min-h-[150vh] sm:min-h-screen relative"
     >
-      <div className="mx-auto p-5">
-        <div className="absolute bottom-10 max-w-3xl">
+      <div className="  ">
+        <div className="absolute bottom-10 max-w-3xl bg-secondary/80 mx-2 p-2 sm:mx-4 sm:p-4 rounded-lg">
           <h1 className="text-4xl md:text-5xl text-light font-medium mb-2">
             {title}
           </h1>
