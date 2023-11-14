@@ -11,7 +11,10 @@ const useMoviesQuery = (
       queryKey: [moviesKey],
       initialPageParam: 1,
       queryFn: ({ pageParam }) => getMoviesFn(pageParam),
-      getNextPageParam: (lastPage) => lastPage.page + 1,
+      getNextPageParam: (lastPage) => {
+        lastPage.page = lastPage.page + 1;
+        return lastPage.page;
+      },
     });
   return {
     data,

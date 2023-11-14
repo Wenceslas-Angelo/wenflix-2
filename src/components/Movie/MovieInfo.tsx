@@ -21,8 +21,10 @@ const MovieInfo = ({
         {title}
       </h1>
       <div className="md:flex items-center my-10">
-        <Rating voteAverage={voteAverage} ratingType="circle" />
-        <Rating voteAverage={voteAverage} ratingType="star" />
+        <div className="flex flex-start mb-5 flex-wrap md:flex-nowrap">
+          <Rating voteAverage={voteAverage} ratingType="circle" />
+          <Rating voteAverage={voteAverage} ratingType="star" />
+        </div>
         <div className="hidden md:block w-[2px] mx-5 h-10 bg-primary" />
         <div className="">
           <span className="text-xl font-bold text-dark">Genres: </span>{' '}

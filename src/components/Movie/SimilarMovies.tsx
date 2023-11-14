@@ -5,7 +5,7 @@ import useSimilarMoviesQuery from '../../hooks/useSimilarMoviequery';
 import Movies from '../Movies';
 
 type SimilarMoviesProps = {
-  movieId: number;
+  movieId: string;
 };
 
 const SimilarMovies = ({ movieId }: SimilarMoviesProps) => {
@@ -17,7 +17,7 @@ const SimilarMovies = ({ movieId }: SimilarMoviesProps) => {
     <>
       <Movies
         header="Similar Movies"
-        movies={similarMovies.data.results}
+        movies={similarMovies}
         showBanner={false}
         showGenre={false}
       />

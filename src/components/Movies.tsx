@@ -49,7 +49,7 @@ const Movies = ({
 }: Props) => {
   if (!movies.data) return;
   const moviesData = movies.data.pages.flatMap((page) => page.results);
-
+  console.log(movies.data.pageParams);
   const GridComponent = (
     <Grid>
       {moviesData.map((movie) => (
@@ -89,7 +89,7 @@ const Movies = ({
         {isInfiniteScroll ? (
           <InfiniteScroll
             dataLength={movies.data?.pages.length || 0}
-            next={movies.fetchNextPage}
+            next={() => movies.fetchNextPage()}
             hasMore={!!movies.hasNextPage}
             loader={<Spinner />}
           >
