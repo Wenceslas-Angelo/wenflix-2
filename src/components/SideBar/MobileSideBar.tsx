@@ -15,7 +15,7 @@ const MobileSideBar = () => {
       } transition-all overflow-auto custom-scrollbar`}
     >
       <div
-        className="bg-gray-200 flex justify-between p-5 rounded-xl 
+        className="bg-gray-200 dark:bg-secondary flex justify-between p-5 rounded-xl 
       absolute right-1 top-0 w-[95%] sm:w-[50%]"
       >
         <div>

@@ -17,7 +17,7 @@ const Form = () => {
       <input
         type="text"
         placeholder="Search for movies"
-        className=" outline-none text-lg rounded-2xl px-2 py-1 w-full pl-10"
+        className=" outline-none text-lg rounded-2xl px-2 py-1 w-full pl-10 dark:bg-dark"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

@@ -27,7 +27,7 @@ const App = () => {
 
         <div className="flex flex-1 flex-col items-center">
           <Header />
-          <div className="sm:hidden bg-light py-5 px-2">
+          <div className="sm:hidden bg-light dark:bg-secondary w-full py-5 px-2">
             <Form />
           </div>
 

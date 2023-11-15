@@ -11,7 +11,7 @@ const Header = () => {
   const { isDark, toggleTheme } = useThemeStore();
 
   return (
-    <header className="bg-customBlue w-full py-2 px-3  flex justify-between items-center text-xl">
+    <header className="bg-customBlue dark:bg-customBlue/80 w-full py-2 px-3  flex justify-between items-center text-xl">
       <div className="cursor-pointer" onClick={() => toggleTheme()}>
         {isDark ? (
           <FaSun color="#FFFF00" fontSize={30} />
