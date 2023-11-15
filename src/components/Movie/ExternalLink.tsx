@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaArrowLeft, FaHeart } from 'react-icons/fa';
 import { TbWorldWww } from 'react-icons/tb';
-import { SiThemoviedatabase } from 'react-icons/si';
 import { BiSolidMoviePlay } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { useShowTrailerStore } from '../../stores/useShowTraillerStore';
@@ -23,9 +22,7 @@ const ExternalLink = ({ homePage }: ExternalLinkProps) => {
       >
         <p className="mr-2">WEBSITE</p> <TbWorldWww />
       </Link>
-      <Link to="/" className="flex items-center px-5 py-2 border border-dark">
-        <p className="mr-2">TMDB</p> <SiThemoviedatabase />
-      </Link>
+
       <span
         className="flex items-center px-5 py-2 border border-dark cursor-pointer"
         onClick={() => trailerVisible()}
