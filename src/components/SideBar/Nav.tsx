@@ -11,8 +11,6 @@ const Nav = () => {
   const { toggle } = useSideBarStore();
   const genres = useGenresQuery();
 
-  console.log(genres);
-
   return (
     <nav className="flex flex-col w-full mt-5 nav-side-bar overflow-auto">
       <NavLink

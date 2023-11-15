@@ -1,16 +1,23 @@
 import React from 'react';
 import { FaBarsStaggered, FaSun } from 'react-icons/fa6';
+import { GiMoon } from 'react-icons/gi';
 import { useSideBarStore } from '../stores/useSideBarStore';
 import { BiLogIn } from 'react-icons/bi';
 import Form from './Search/Form';
+import { useThemeStore } from '../stores/useThemeStore';
 
 const Header = () => {
   const { toggle } = useSideBarStore();
+  const { isDark, toggleTheme } = useThemeStore();
 
   return (
     <header className="bg-customBlue w-full py-2 px-3  flex justify-between items-center text-xl">
-      <div className="cursor-pointer">
-        <FaSun color="#FFFF00" fontSize={30} />
+      <div className="cursor-pointer" onClick={() => toggleTheme()}>
+        {isDark ? (
+          <FaSun color="#FFFF00" fontSize={30} />
+        ) : (
+          <GiMoon color="#eefffd" fontSize={30} />
+        )}
       </div>
       <div className="w-[50%] hidden sm:flex">
         <Form />

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import { useThemeStore } from './stores/useThemeStore';
+
 // Page
 import Home from './pages/Home';
 import Category from './pages/Category';
@@ -15,9 +17,10 @@ import Form from './components/Search/Form';
 import Results from './pages/Results';
 
 const App = () => {
+  const { isDark } = useThemeStore();
   return (
-    <>
-      <div className="flex">
+    <div className={`${isDark ? 'dark' : 'light'}`}>
+      <div className="flex dark:bg-dark dark:text-light">
         <div className="">
           <SideBar />
         </div>
@@ -40,7 +43,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
