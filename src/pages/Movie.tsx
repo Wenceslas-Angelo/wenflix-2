@@ -25,8 +25,6 @@ const Movie = () => {
     return <Spinner />;
   }
 
-  console.log(movie)
-
   const trailler = movie.videos.results.find(
     (video) => video.name === 'Official Trailer'
   );
