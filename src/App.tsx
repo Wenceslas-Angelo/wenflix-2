@@ -9,6 +9,8 @@ import Category from './pages/Category';
 import Movie from './pages/Movie';
 import NotFound from './pages/NotFound';
 import Genre from './pages/Genre';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 // Components
 import Header from './components/Header';
@@ -38,6 +40,8 @@ const App = () => {
               <Route path="/movie/:movieId" element={<Movie />} />
               <Route path="/results/:query" element={<Results />} />
               <Route path="/genre/:genreName/:genreId" element={<Genre />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

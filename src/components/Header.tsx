@@ -5,6 +5,7 @@ import { useSideBarStore } from '../stores/useSideBarStore';
 import { BiLogIn } from 'react-icons/bi';
 import Form from './Search/Form';
 import { useThemeStore } from '../stores/useThemeStore';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const { toggle } = useSideBarStore();
@@ -27,10 +28,10 @@ const Header = () => {
         <FaBarsStaggered color="#ffffff" fontSize={30} />
       </div>
 
-      <div className="items-center hidden md:flex cursor-pointer">
+      <Link to="/login" className="items-center hidden md:flex cursor-pointer">
         <p className="mr-2 text-light font-semibold">Login</p>
         <BiLogIn fontSize={30} color="#ffffff" />
-      </div>
+      </Link>
     </header>
   );
 };
